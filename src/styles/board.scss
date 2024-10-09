@@ -88,3 +88,80 @@
 .board-item.info .icon {
   color: #17a2b8;
 }
+
+
+/* Styling for resizing handles */
+.rnd-resize-handle {
+  background-color: #1976d2; /* Color for the handle */
+  width: 10px; /* Width of handle */
+  height: 10px; /* Height of handle */
+  border-radius: 50%; /* Rounded handle */
+  position: absolute;
+}
+
+.rnd-resize-handle-bottom-right {
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+}
+
+/* You can similarly style other sides or corners if needed */
+.rnd-resize-handle-top-left {
+  top: 0;
+  left: 0;
+  cursor: nw-resize;
+}
+
+.rnd-resize-handle-bottom-left {
+  bottom: 0;
+  left: 0;
+  cursor: sw-resize;
+}
+
+.rnd-resize-handle-top-right {
+  top: 0;
+  right: 0;
+  cursor: ne-resize;
+}
+/* Customize the resize handles */
+.resizable-box .react-resizable-handle {
+  background-color: #1976d2; /* Change the handle color */
+  width: 12px;
+  height: 12px;
+  border-radius: 50%; /* Make the handles round */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Add custom handle for the bottom-right corner */
+.resizable-box .react-resizable-handle-bottom-right {
+  cursor: se-resize;
+  bottom: 0;
+  right: 0;
+}
+
+/* Add other sides or corner handles if needed */
+.resizable-box .react-resizable-handle-bottom-left {
+  cursor: sw-resize;
+  bottom: 0;
+  left: 0;
+}
+
+.resizable-box .react-resizable-handle-top-right {
+  cursor: ne-resize;
+  top: 0;
+  right: 0;
+}
+
+.resizable-box .react-resizable-handle-top-left {
+  cursor: nw-resize;
+  top: 0;
+  left: 0;
+}
+
+/* Handle hover effect to indicate resizable */
+.resizable-box:hover .react-resizable-handle {
+  background-color: #ff9800; /* Change color on hover */
+}
+
+

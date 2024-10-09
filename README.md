@@ -64,7 +64,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - **Filter/Search Options**: Allows users to filter or search the displayed data for specific metrics.
 - **Drill-down Charts**: Clicking on a chart element drills down into more detailed information or opens additional charts.
 - **Tooltips**: Added tooltip for drag icon.
-resize oard, borad, view detail popup,added webpack support.
+resize oard, borad, view detail popup,added webpack support. slide  tiles in board.
 
 ### Libraries Used
 - **Frontend**:

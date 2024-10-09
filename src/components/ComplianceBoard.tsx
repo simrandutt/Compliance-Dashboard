@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Card, CardContent, Typography, Box, IconButton, Modal, Button } from '@mui/material'; 
-import { FiCheckCircle, FiAlertCircle, FiActivity, FiAlertTriangle } from 'react-icons/fi'; 
-import { Rnd } from 'react-rnd'; 
-import '../styles/board.scss'; 
+import { Card, CardContent, Typography, Box, IconButton, Modal, Button } from '@mui/material';
+import { FiCheckCircle, FiAlertCircle, FiActivity, FiAlertTriangle } from 'react-icons/fi';
+import { Rnd } from 'react-rnd';
+import '../styles/board.scss';
 
 const ComplianceBoards: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -21,8 +21,8 @@ const ComplianceBoards: React.FC = () => {
         {/* Certification Status Board */}
         <Rnd
           default={{
-            x: 0, // Add initial x position
-            y: 0, // Add initial y position
+            x: 0, // Initial position
+            y: 0,
             width: 320,
             height: 250,
           }}
@@ -30,6 +30,18 @@ const ComplianceBoards: React.FC = () => {
           minHeight={200}
           maxWidth={600}
           maxHeight={400}
+          bounds="parent" // Restrict movement within parent
+          enableResizing={{
+            bottom: true,
+            bottomLeft: true,
+            bottomRight: true,
+            left: true,
+            right: true,
+            top: true,
+            topLeft: true,
+            topRight: true,
+          }} // Allow resizing
+          className="rnd-resize-container resizable-box"
         >
           <Card
             elevation={3}
@@ -92,7 +104,7 @@ const ComplianceBoards: React.FC = () => {
         {/* Task Summary Board */}
         <Rnd
           default={{
-            x: 340, // Add x and y positions to avoid overlap with the previous board
+            x: 340, // Adjust to avoid overlapping
             y: 0,
             width: 320,
             height: 250,
@@ -101,6 +113,8 @@ const ComplianceBoards: React.FC = () => {
           minHeight={200}
           maxWidth={600}
           maxHeight={400}
+          bounds="parent" // Restrict movement within parent
+          enableResizing={true} // Allow resizing
         >
           <Card
             elevation={3}
@@ -156,7 +170,7 @@ const ComplianceBoards: React.FC = () => {
         {/* Upcoming Audits Board */}
         <Rnd
           default={{
-            x: 680, // Adjust x and y positions
+            x: 680, // Adjust to avoid overlapping
             y: 0,
             width: 320,
             height: 250,
@@ -165,6 +179,8 @@ const ComplianceBoards: React.FC = () => {
           minHeight={200}
           maxWidth={600}
           maxHeight={400}
+          bounds="parent" // Restrict movement within parent
+          enableResizing={true} // Allow resizing
         >
           <Card
             elevation={3}

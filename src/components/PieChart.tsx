@@ -6,14 +6,14 @@ import '../styles/pie.scss';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PieChart: React.FC<{ complianceScore: string }> = ({ complianceScore }) => {
+const PieChart: React.FC<{ complianceByStatus: { completed: number; pending: number; open: number } }> = ({ complianceByStatus }) => {
   const navigate = useNavigate();
 
   const data = {
     labels: ['Completed', 'Pending', 'Open'],
     datasets: [
       {
-        data: [85, 12, 3],
+        data: [complianceByStatus.completed, complianceByStatus.pending, complianceByStatus.open], // Different data for pie chart
         backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56'],
       },
     ],

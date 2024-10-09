@@ -20,13 +20,13 @@ interface ChartData {
 
 const Reports: React.FC = () => {
   const location = useLocation();
-  const [chartData, setChartData] = useState<ChartData[]>([]); // Ensure chartData is always an array
+  const [chartData, setChartData] = useState<ChartData[]>([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   useEffect(() => {
     if (location.state?.chartData) {
-      setChartData(location.state.chartData); // Use passed chart data if available
+      setChartData(location.state.chartData);
     } else {
       setChartData([
         { label: 'Default Data', value: 100 },

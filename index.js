@@ -5,13 +5,13 @@ const port = 5001;
 
 app.use(cors());
 
-// Generate mock compliance data with more details
 const complianceData = {
-  complianceScore: '85%', // Compliance score percentage
+  complianceScore: '85%', // Overall compliance score
   controlsImplemented: 58, // Number of controls implemented
-  pendingTasks: 12, // Number of pending tasks
-  resolvedIssues: 48, // Number of resolved issues
-  openIssues: 12, // Number of open issues
+  pendingTasks: 12, // Pending tasks count
+  resolvedIssues: 48, // Resolved issues count
+  openIssues: 12, // Open issues count
+
   monthlyData: [
     { month: 'Aug', completedOnTime: 10, completedOverdue: 5, stillOpen: 3 },
     { month: 'Sep', completedOnTime: 15, completedOverdue: 6, stillOpen: 2 },
@@ -24,13 +24,25 @@ const complianceData = {
     { month: 'Apr', completedOnTime: 20, completedOverdue: 4, stillOpen: 0 },
     { month: 'May', completedOnTime: 21, completedOverdue: 8, stillOpen: 2 },
   ],
-  workOrders: Array.from({ length: 20 }, (v, i) => ({
+
+  // Pie chart data for compliance by status
+  complianceByStatus: {
+    completed: 85, // Total completed tasks
+    pending: 12, // Total pending tasks
+    open: 3, // Total open tasks
+  },
+
+  // Work orders with more complexity
+  workOrders: Array.from({ length: 30 }, (v, i) => ({
     id: `#20${800 + i}`,
     name: `Work Order ${i + 1}`,
     startDate: `2023-07-${10 + i}`,
     dueDate: `2023-07-${15 + i}`,
     completionDate: `2023-07-${16 + i}`,
-    status: i % 2 === 0 ? 'Completed' : 'Pending',
+    priority: i % 2 === 0 ? 'High' : 'Low', // New column: Priority of the work order
+    status: i % 2 === 0 ? 'Completed' : 'Pending', // New column: Status of the work order
+    assignedTo: `User ${i + 1}`, // New column: Assigned user
+    description: `This is a description for work order ${i + 1}`, // New column: Description of the work order
   })),
 };
 

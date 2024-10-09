@@ -49,7 +49,6 @@ const Dashboard: React.FC = () => {
       <ResponsiveGridLayout
         className="layout"
           breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-
         cols={{ lg: 4, md: 4, sm: 2, xs: 1, xxs: 1 }}
         rowHeight={100}
         width={1200}
@@ -74,12 +73,12 @@ const Dashboard: React.FC = () => {
             <span className="widget-handle">
               <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />
             </span>
-            <PieChart complianceScore={complianceData.complianceScore} />
+            <PieChart complianceByStatus={complianceData.complianceByStatus} />
           </div>
         </div>
 
         {/* Work Orders Table Widget */}
-        <div key="workOrders" data-grid={{ x: 0, y: 6, w: 4, h: 4.5, minW: 4, minH: 4 }}>
+        <div key="workOrders" data-grid={{ x: 0, y: 6, w: 4, h: 5.5, minW: 4, minH: 4 }}>
           <div className="widget">
             <span className="widget-handle">
               <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />

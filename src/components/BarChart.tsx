@@ -43,12 +43,13 @@ const BarChart: React.FC<{ monthlyData: any[] }> = ({ monthlyData }) => {
           completedOverdue: monthlyData[clickedIndex].completedOverdue,
           stillOpen: monthlyData[clickedIndex].stillOpen,
         };
-        // Navigate to Reports and pass all clicked data as an array of objects
+
         const chartDataForReport = [
           { label: 'Completed On Time', value: clickedData.completedOnTime },
           { label: 'Completed Overdue', value: clickedData.completedOverdue },
           { label: 'Still Open', value: clickedData.stillOpen },
         ];
+
         navigate('/reports', { state: { chartData: chartDataForReport } });
       }
     },
@@ -65,8 +66,7 @@ const BarChart: React.FC<{ monthlyData: any[] }> = ({ monthlyData }) => {
   };
 
   return (
-    <div style={{ maxWidth: '600px',
-    paddingLeft: '15px',paddingTop: '32px' }}>
+    <div style={{ maxWidth: '600px', paddingLeft: '15px', paddingTop: '32px' }}>
       <Bar data={data} options={options} />
     </div>
   );

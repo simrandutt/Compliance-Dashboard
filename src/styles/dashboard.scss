@@ -19,16 +19,9 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  .widget {
-    // padding: 20px;
-    // position: relative;
-    // transition: all 0.3s ease;
-    // z-index: 10;
-  }
-
   .widget-handle {
     position: absolute;
-    top: 1cm !important;
+    top: 10px !important;
     right: 10px;
     font-size: 1.2rem;
     color: #666;

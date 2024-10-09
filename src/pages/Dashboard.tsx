@@ -25,7 +25,6 @@ const Dashboard: React.FC = () => {
       .then((data) => {
         console.log('Data fetched from backend:', data);
         setComplianceData(data);
-        debugger
         setLoading(false);
       })
       .catch((error) => {
@@ -70,7 +69,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* Pie Chart Widget */}
-        <div key="pieChart" data-grid={{ x: 0, y: 3, w: 2, h: 2, minW: 2, minH: 3 }}>
+        <div key="pieChart" data-grid={{ x: 3, y: 3, w: 2, h: 3, minW: 2, minH: 3 }}>
           <div className="widget">
             <span className="widget-handle">
               <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />
@@ -80,7 +79,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* Work Orders Table Widget */}
-        <div key="workOrders" data-grid={{ x: 0, y: 6, w: 4, h: 5, minW: 4, minH: 4 }}>
+        <div key="workOrders" data-grid={{ x: 0, y: 6, w: 4, h: 4.5, minW: 4, minH: 4 }}>
           <div className="widget">
             <span className="widget-handle">
               <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />

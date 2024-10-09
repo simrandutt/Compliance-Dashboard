@@ -8,7 +8,7 @@
   }
 
   .widget{
-    background: beige;
+    background: #ececec;
   }
   .dashboard-content {
     background-color: #f8f9fa;
@@ -28,7 +28,7 @@
 
   .widget-handle {
     position: absolute;
-    top: 0px !important;
+    top: 1cm !important;
     right: 10px;
     font-size: 1.2rem;
     color: #666;
@@ -91,6 +91,7 @@
   position: relative;
   transition: all 0.3s ease;
   z-index: 10;
+  height: 89%;
   // min-height: 300px; /* Set a minimum height for the widgets */
 }
 

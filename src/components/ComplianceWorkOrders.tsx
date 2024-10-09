@@ -31,7 +31,7 @@ const ComplianceWorkOrders: React.FC<{ workOrders: any[] }> = ({ workOrders }) =
   );
 
   return (
-    <Paper>
+    <Paper style={{ marginTop: '20px'}}>
       {/* Add a TextField for filtering */}
       <TextField
           variant="outlined"

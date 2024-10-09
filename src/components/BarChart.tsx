@@ -65,7 +65,8 @@ const BarChart: React.FC<{ monthlyData: any[] }> = ({ monthlyData }) => {
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+    <div style={{ maxWidth: '600px',
+    paddingLeft: '15px',paddingTop: '32px' }}>
       <Bar data={data} options={options} />
     </div>
   );

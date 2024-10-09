@@ -2,6 +2,10 @@
   background-color: #ffffff;
   color: #000000;
 
+  .widget-scrollable {
+    overflow-y: auto;
+    // height: 100%;
+  }
   .sidebar {
     background-color: #1e2a38;
     color: #ffffff;
@@ -78,6 +82,7 @@
   cursor: auto;
 }
 
+
 .widget {
   // background: beige;
   padding: 20px;
@@ -85,9 +90,13 @@
   transition: all 0.3s ease;
   z-index: 10;
   height: 89%;
+  padding: 20px;
+  // min-height: 300px;
   // min-height: 300px; /* Set a minimum height for the widgets */
 }
-
+.widget-scrollable {
+  overflow-y: auto;
+}
 // .react-draggable :hover {
 //   transform: scale(1.02); /* Slightly enlarges the widget on hover */
 //   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds a stronger shadow */

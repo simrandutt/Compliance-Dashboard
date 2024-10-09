@@ -7,6 +7,9 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'; 
 import { FiMove } from 'react-icons/fi'; 
 import '../styles/dashboard.scss'; 
+import { Tooltip } from '@mui/material';
+import ComplianceBoards from '../components/ComplianceBoard'; // Import the component
+
 
 const ResponsiveGridLayout = WidthProvider(Responsive); 
 
@@ -46,6 +49,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
+      <ComplianceBoards />
       <ResponsiveGridLayout
         className="layout"
           breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
@@ -60,9 +64,11 @@ const Dashboard: React.FC = () => {
         {/* Bar Chart Widget */}
         <div key="barChart" data-grid={{ x: 0, y: 0, w: 2, h: 3, minW: 2, minH: 3 }}>
           <div className="widget">
+          <Tooltip title="Drag me" placement="top" arrow>
             <span className="widget-handle">
               <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />
             </span>
+            </Tooltip>
             <BarChart monthlyData={complianceData.monthlyData} />
           </div>
         </div>
@@ -70,19 +76,25 @@ const Dashboard: React.FC = () => {
         {/* Pie Chart Widget */}
         <div key="pieChart" data-grid={{ x: 3, y: 3, w: 2, h: 3, minW: 2, minH: 3 }}>
           <div className="widget">
+          <Tooltip title="Drag me" placement="top" arrow> 
+          <span>
             <span className="widget-handle">
               <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />
             </span>
+            </span>
+            </Tooltip>
             <PieChart complianceByStatus={complianceData.complianceByStatus} />
           </div>
         </div>
 
         {/* Work Orders Table Widget */}
         <div key="workOrders" data-grid={{ x: 0, y: 6, w: 4, h: 5.5, minW: 4, minH: 4 }}>
-          <div className="widget">
-            <span className="widget-handle">
+          <div className="widget widget-scrollable">
+          <Tooltip title="Drag me" placement="top" arrow> 
+            <div className="widget-handle">
               <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />
-            </span>
+            </div>
+            </Tooltip>
             <ComplianceWorkOrders workOrders={complianceData.workOrders} />
           </div>
         </div>

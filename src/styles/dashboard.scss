@@ -7,12 +7,15 @@
     color: #ffffff;
   }
 
+  .widget{
+    background: beige;
+  }
   .dashboard-content {
     background-color: #f8f9fa;
   }
   .layout .react-grid-item {
-    background: beige !important;
-        border-radius: 8px;
+    background: none !important;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
@@ -25,12 +28,12 @@
 
   .widget-handle {
     position: absolute;
-    top: 0px;
+    top: 0px !important;
     right: 10px;
     font-size: 1.2rem;
     color: #666;
     z-index: 11;
-    cursor: grab;
+    cursor: grab !important;
   }
 
   .widget-handle:hover {
@@ -63,7 +66,7 @@
 }
 
 .react-grid-placeholder {
-  z-index: 8 !important;
+  z-index: 0 !important;
   background-color: rgba(0, 123, 255, 0.2);
   border-radius: 8px;
   border: 2px dashed rgba(0, 123, 255, 0.5);
@@ -78,9 +81,12 @@
   overflow-y: auto; 
 }
 
-.widget:hover {
-  transform: scale(1.02); /* Slightly enlarges the widget on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds a stronger shadow */
-  border: 1px solid rgba(0, 123, 255, 0.6); /* Highlight border */
-  transition: all 0.3s ease; /* Smooth animation */
+.layout .react-grid-item {
+  cursor: auto;
 }
+// .react-draggable :hover {
+//   transform: scale(1.02); /* Slightly enlarges the widget on hover */
+//   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds a stronger shadow */
+//   border: 1px solid rgba(0, 123, 255, 0.6); /* Highlight border */
+//   transition: all 0.3s ease; /* Smooth animation */
+// }

@@ -25,6 +25,7 @@ const Dashboard: React.FC = () => {
       .then((data) => {
         console.log('Data fetched from backend:', data);
         setComplianceData(data);
+        debugger
         setLoading(false);
       })
       .catch((error) => {
@@ -33,6 +34,7 @@ const Dashboard: React.FC = () => {
   }, []);
 
   if (loading) {
+    
     return (
       <div className="dashboard-loading">
         {/* Display shimmer layout */}

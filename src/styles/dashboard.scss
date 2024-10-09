@@ -20,10 +20,10 @@
   }
 
   .widget {
-    padding: 20px;
-    position: relative;
-    transition: all 0.3s ease;
-    z-index: 10;
+    // padding: 20px;
+    // position: relative;
+    // transition: all 0.3s ease;
+    // z-index: 10;
   }
 
   .widget-handle {
@@ -84,6 +84,16 @@
 .layout .react-grid-item {
   cursor: auto;
 }
+
+.widget {
+  // background: beige;
+  padding: 20px;
+  position: relative;
+  transition: all 0.3s ease;
+  z-index: 10;
+  // min-height: 300px; /* Set a minimum height for the widgets */
+}
+
 // .react-draggable :hover {
 //   transform: scale(1.02); /* Slightly enlarges the widget on hover */
 //   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds a stronger shadow */

@@ -20,16 +20,14 @@ interface ChartData {
 
 const Reports: React.FC = () => {
   const location = useLocation();
-  const [chartData, setChartData] = useState<ChartData[] | null>(null);
+  const [chartData, setChartData] = useState<ChartData[]>([]); // Ensure chartData is always an array
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   useEffect(() => {
     if (location.state?.chartData) {
-      // If chartData is passed, use it
-      setChartData(location.state.chartData);
+      setChartData(location.state.chartData); // Use passed chart data if available
     } else {
-      // Default data if no chart data is passed
       setChartData([
         { label: 'Default Data', value: 100 },
         { label: 'Sample Data', value: 80 },
@@ -62,7 +60,7 @@ const Reports: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {chartData &&
+              {chartData.length > 0 && 
                 chartData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data: ChartData, index: number) => (
                   <TableRow key={index}>
                     <TableCell>{data.label}</TableCell>
@@ -75,7 +73,7 @@ const Reports: React.FC = () => {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={chartData?.length || 0}
+          count={chartData.length || 0}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

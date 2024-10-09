@@ -28,8 +28,8 @@ const PieChart: React.FC<{ complianceScore: string }> = ({ complianceScore }) =>
           value: data.datasets[0].data[clickedIndex],
         };
 
-        // Navigate to Reports and pass the clicked data
-        navigate('/reports', { state: { chartData: clickedData } });
+        // Always pass chartData as an array
+        navigate('/reports', { state: { chartData: [clickedData] } });
       }
     },
     plugins: {

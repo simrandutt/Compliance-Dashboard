@@ -137,5 +137,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 -**On click of Pie Chart, it will navigate to Reports page with data**
 <img width="1351" alt="Screenshot 2024-10-09 at 2 05 16 PM" src="https://github.com/user-attachments/assets/92f61e06-a25e-4e66-8b71-fa2f9c41c1a1">
 
+-** Shimmer UI or loader, when no data from server, Once data loads the new UI**
+<img width="1257" alt="Screenshot 2024-10-09 at 2 48 33 PM" src="https://github.com/user-attachments/assets/04a2075b-6b4f-40d0-9c05-d2ea08baf7ad">
+
 
 

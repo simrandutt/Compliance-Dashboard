@@ -3,7 +3,12 @@ import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from '@mui/ma
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useLocation } from 'react-router-dom';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  user: { username: string; name: string; role: string };
+  onLogout: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ user, onLogout }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -14,7 +19,6 @@ const Header: React.FC = () => {
     setAnchorEl(null);
   };
 
-  // Dynamically set the title based on the current route
   const location = useLocation();
   const getHeaderTitle = () => {
     switch (location.pathname) {
@@ -63,8 +67,9 @@ const Header: React.FC = () => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem disabled>{user.name} ({user.role})</MenuItem>
+            <MenuItem disabled>{user.username}</MenuItem>
+            <MenuItem onClick={onLogout}>Logout</MenuItem>
           </Menu>
         </div>
       </Toolbar>

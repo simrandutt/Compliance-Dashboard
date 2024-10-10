@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Responsive, WidthProvider } from 'react-grid-layout';
 import BarChart from '../components/BarChart';
 import PieChart from '../components/PieChart';
+import LineChart from '../components/LineChart';
 import ComplianceWorkOrders from '../components/ComplianceWorkOrders';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -47,29 +48,26 @@ const Dashboard: React.FC = () => {
       return complianceData;
     }
     
-  // Extract the year and month from the selected date (e.g., "2023-07" or "2023-08")
-  const selectedYear = selectedDate.slice(0, 4); // Extract the year
-  const selectedMonthIndex = new Date(selectedDate).getMonth(); // Get the month as an index
-  const selectedMonth = monthNames[selectedMonthIndex]; // Convert month index to the short name (e.g., "Jul")
+    const selectedYear = selectedDate.slice(0, 4); 
+    const selectedMonthIndex = new Date(selectedDate).getMonth(); 
+    const selectedMonth = monthNames[selectedMonthIndex]; 
 
-  // Now filter monthly data based on the selected year and month
-  const filteredMonthlyData = complianceData.monthlyData.filter((data: any) => {
-    return data.month === selectedMonth; // Ensure this matches the format in your backend
-  });
+    const filteredMonthlyData = complianceData.monthlyData.filter((data: any) => {
+      return data.month === selectedMonth;
+    });
     
     return { ...complianceData, monthlyData: filteredMonthlyData };
   };
 
   useEffect(() => {
-    refreshDashboardData(); // Fetch data initially
+    refreshDashboardData(); 
   }, []);
 
-  const filteredData = getFilteredData(); // Get the filtered data
+  const filteredData = getFilteredData(); 
 
   if (loading) {
     return (
       <div className="dashboard-loading">
-        {/* Display shimmer layout */}
         <Skeleton height={300} width={600} />
         <Skeleton height={300} width={400} />
         <Skeleton height={300} width={800} />
@@ -79,9 +77,8 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
-      <div className="dashboard-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px',float: 'right',
+      <div className="dashboard-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', float: 'right',
     marginTop: '-72px', marginRight: '17px' }}>
-        {/* Right side: Date Picker and Refresh Button */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <TextField
             id="date"
@@ -91,18 +88,17 @@ const Dashboard: React.FC = () => {
             onChange={(e) => {
               const newDate = e.target.value;
               setSelectedDate(newDate);
-              refreshDashboardData(newDate); // Trigger data refresh when date is changed
+              refreshDashboardData(newDate); 
             }}
             InputLabelProps={{
               shrink: true,
             }}
           />
 
-          {/* Refresh Button */}
           <Button
             variant="contained"
             color="primary"
-            onClick={() => refreshDashboardData(selectedDate)} // Keep the current date when refreshing
+            onClick={() => refreshDashboardData(selectedDate)} 
             startIcon={<FiRefreshCw />}
           >
             Refresh Dashboard
@@ -123,7 +119,7 @@ const Dashboard: React.FC = () => {
         useCSSTransforms={true}
         margin={[20, 20]}
       >
-        {/* Pass the filtered data to the charts */}
+        {/* Bar Chart */}
         <div key="barChart" data-grid={{ x: 0, y: 0, w: 2, h: 3, minW: 2, minH: 3 }}>
           <div className="widget">
             <Tooltip title="Drag me" placement="top" arrow>
@@ -135,7 +131,20 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
 
-        <div key="pieChart" data-grid={{ x: 3, y: 3, w: 2, h: 3, minW: 2, minH: 3 }}>
+        {/* First Line Chart: Successful Audits */}
+        <div key="successfulAudits" data-grid={{ x: 0, y: 3, w: 2, h: 3, minW: 2, minH: 3 }}>
+          <div className="widget chart-container">
+            <Tooltip title="Drag me" placement="top" arrow>
+              <span className="widget-handle">
+                <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />
+              </span>
+            </Tooltip>
+            <LineChart auditCompletionData={filteredData?.monthlyData || []} chartTitle="Successful Audits Completion" />
+          </div>
+        </div>
+
+        {/* Pie Chart */}
+        <div key="pieChart" data-grid={{ x: 2, y: 0, w: 2, h: 3, minW: 2, minH: 3 }}>
           <div className="widget">
             <Tooltip title="Drag me" placement="top" arrow>
               <span className="widget-handle">
@@ -146,6 +155,19 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
 
+        {/* Second Line Chart: Pending Audits */}
+        <div key="pendingAudits" data-grid={{ x: 2, y: 3, w: 2, h: 3, minW: 2, minH: 3 }}>
+          <div className="widget chart-container">
+            <Tooltip title="Drag me" placement="top" arrow>
+              <span className="widget-handle">
+                <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />
+              </span>
+            </Tooltip>
+            <LineChart auditCompletionData={filteredData?.monthlyData || []} chartTitle="Pending Audits Overview" pending />
+          </div>
+        </div>
+
+        {/* Work Orders Table */}
         <div key="workOrders" data-grid={{ x: 0, y: 6, w: 4, h: 5, minW: 4, minH: 3 }}>
           <div className="widget widget-scrollable">
             <Tooltip title="Drag me" placement="top" arrow>

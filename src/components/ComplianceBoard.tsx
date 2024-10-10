@@ -16,7 +16,6 @@ const ComplianceBoards: React.FC = () => {
       .catch(error => console.error('Error fetching compliance data:', error));
   }, []);
 
-  // Handle modal actions
   const handleOpen = (content: string) => {
     setModalContent(content);
     setOpen(true);
@@ -25,7 +24,6 @@ const ComplianceBoards: React.FC = () => {
   const handleClose = () => setOpen(false);
 
   if (!complianceData) {
-    // Render loading state while fetching data
     return <div>Loading...</div>;
   }
 
@@ -33,7 +31,6 @@ const ComplianceBoards: React.FC = () => {
     <Box sx={{ padding: '20px', minHeight: '250px', maxWidth: '1200px', marginLeft: '40px' }}>
       <Box display="flex" justifyContent="space-between" gap={3}>
         
-        {/* Certification Status Tile */}
         <Card
           elevation={3}
           className="board board-success"
@@ -211,7 +208,6 @@ const ComplianceBoards: React.FC = () => {
           </IconButton>
         </Card>
 
-        {/* Modal for View Details */}
         <Modal open={open} onClose={handleClose} aria-labelledby="modal-title" aria-describedby="modal-description">
           <Box
             sx={{

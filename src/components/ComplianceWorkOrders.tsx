@@ -32,7 +32,6 @@ const ComplianceWorkOrders: React.FC<{ workOrders: any[] }> = ({ workOrders }) =
 
   return (
     <Paper style={{ marginTop: '20px'}}>
-            {/* Add a TextField for filtering */}
             <TextField
           variant="outlined"
           size="small"
@@ -46,10 +45,10 @@ const ComplianceWorkOrders: React.FC<{ workOrders: any[] }> = ({ workOrders }) =
             width: '200px',
           }}
           InputProps={{
-            style: { padding: '5px 10px', height: '35px',marginLeft: '7px' }, // Add padding and height adjustments
+            style: { padding: '5px 10px', height: '35px',marginLeft: '7px' }, 
           }}
           inputProps={{
-            style: { textAlign: 'center' }, // Center the placeholder text
+            style: { textAlign: 'center' }, 
           }}
         />
 

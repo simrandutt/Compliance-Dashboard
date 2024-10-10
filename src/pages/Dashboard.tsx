@@ -5,19 +5,19 @@ import PieChart from '../components/PieChart';
 import ComplianceWorkOrders from '../components/ComplianceWorkOrders';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'; 
-import { FiMove } from 'react-icons/fi'; 
+import { FiMove,FiRefreshCw } from 'react-icons/fi'; 
 import '../styles/dashboard.scss'; 
 import { Tooltip } from '@mui/material';
 import ComplianceBoards from '../components/ComplianceBoard'; // Import the component
-
-
 const ResponsiveGridLayout = WidthProvider(Responsive); 
 
 const Dashboard: React.FC = () => {
   const [complianceData, setComplianceData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  // Function to refresh data
+  const refreshDashboardData = () => {
+    setLoading(true);
     fetch('http://localhost:5001/api/compliance')
       .then((response) => {
         if (!response.ok) {
@@ -33,10 +33,13 @@ const Dashboard: React.FC = () => {
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
+  };
+
+  useEffect(() => {
+    refreshDashboardData(); // Fetch data initially
   }, []);
 
   if (loading) {
-    
     return (
       <div className="dashboard-loading">
         {/* Display shimmer layout */}
@@ -49,10 +52,25 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
+    <div className="dashboard-header">
+      <div className="theme-toggle-container">
+        <div className="theme-toggle">
+        </div>
+        <button
+          className="refresh-dashboard-button"
+          onClick={refreshDashboardData}
+        >
+          <FiRefreshCw style={{ marginRight: '8px' }} />
+          Refresh Dashboard
+        </button>
+      </div>
+    </div>
+      
       <ComplianceBoards />
+      
       <ResponsiveGridLayout
         className="layout"
-          breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
+        breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
         cols={{ lg: 4, md: 4, sm: 2, xs: 1, xxs: 1 }}
         rowHeight={100}
         width={1200}
@@ -61,39 +79,34 @@ const Dashboard: React.FC = () => {
         useCSSTransforms={true}
         margin={[20, 20]}
       >
-        {/* Bar Chart Widget */}
         <div key="barChart" data-grid={{ x: 0, y: 0, w: 2, h: 3, minW: 2, minH: 3 }}>
           <div className="widget">
-          <Tooltip title="Drag me" placement="top" arrow>
-            <span className="widget-handle">
-              <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />
-            </span>
+            <Tooltip title="Drag me" placement="top" arrow>
+              <span className="widget-handle">
+                <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />
+              </span>
             </Tooltip>
             <BarChart monthlyData={complianceData.monthlyData} />
           </div>
         </div>
 
-        {/* Pie Chart Widget */}
         <div key="pieChart" data-grid={{ x: 3, y: 3, w: 2, h: 3, minW: 2, minH: 3 }}>
           <div className="widget">
-          <Tooltip title="Drag me" placement="top" arrow> 
-          <span>
-            <span className="widget-handle">
-              <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />
-            </span>
-            </span>
+            <Tooltip title="Drag me" placement="top" arrow>
+              <span className="widget-handle">
+                <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />
+              </span>
             </Tooltip>
             <PieChart complianceByStatus={complianceData.complianceByStatus} />
           </div>
         </div>
 
-        {/* Work Orders Table Widget */}
-        <div key="workOrders" data-grid={{ x: 0, y: 6, w: 4, h: 5.5, minW: 4, minH: 4 }}>
+        <div key="workOrders" data-grid={{ x: 0, y: 6, w: 4, h: 5, minW: 4, minH: 3 }}>
           <div className="widget widget-scrollable">
-          <Tooltip title="Drag me" placement="top" arrow> 
-            <div className="widget-handle">
-              <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />
-            </div>
+            <Tooltip title="Drag me" placement="top" arrow>
+              <span className="widget-handle">
+                <FiMove style={{ cursor: 'grab', fontSize: '1.2rem', color: '#666' }} />
+              </span>
             </Tooltip>
             <ComplianceWorkOrders workOrders={complianceData.workOrders} />
           </div>

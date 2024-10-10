@@ -4,19 +4,34 @@
 
   .widget-scrollable {
     overflow-y: auto;
-    // height: 100%;
+    scroll-behavior: smooth; /* Smooth scroll animation */
   }
+
   .sidebar {
     background-color: #1e2a38;
     color: #ffffff;
   }
 
-  .widget{
+  .widget {
     background: #ececec;
+
+    transition: all 0.3s ease;
+    z-index: 10;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out; /* Hover animation */
   }
+
+  .widget:hover {
+    transform: scale(1.02); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds a stronger shadow */
+    border: 1px solid rgba(178, 181, 185, 0.6); /* Highlight border */
+  }
+
   .dashboard-content {
     background-color: #f8f9fa;
   }
+
   .layout .react-grid-item {
     background: none !important;
     border-radius: 8px;
@@ -42,7 +57,36 @@
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }
+
+
 }
+
+  /* Refresh Button Styling */
+  .refresh-dashboard-button {
+    position: relative;
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #1976d2;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    float: right;
+    top: -50px;
+    right: 51px;
+  }
+
+  .refresh-dashboard-button:hover {
+    background-color: #125ca8;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .refresh-dashboard-button:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  }
 
 .layout .react-grid-item {
   border-radius: 0 !important;
@@ -50,13 +94,9 @@
   margin-bottom: 20px;
 }
 
-
-
-
-
 .layout .react-grid-item.react-draggable-dragging,
 .layout .react-grid-item.react-resizable-resizing {
-  background: white !important; 
+  background: white !important;
   border-radius: 8px !important;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1) !important;
   padding: 20px !important;
@@ -70,36 +110,28 @@
   height: 100%;
 }
 
-
 .page-container {
   height: 100vh;
   box-sizing: border-box;
   padding: 20px;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 .layout .react-grid-item {
   cursor: auto;
 }
 
-
 .widget {
-  // background: beige;
   padding: 20px;
   position: relative;
   transition: all 0.3s ease;
   z-index: 10;
   height: 89%;
   padding: 20px;
-  // min-height: 300px;
-  // min-height: 300px; /* Set a minimum height for the widgets */
 }
+
 .widget-scrollable {
   overflow-y: auto;
+  scroll-behavior: smooth; 
+  height: 94%;
 }
-// .react-draggable :hover {
-//   transform: scale(1.02); /* Slightly enlarges the widget on hover */
-//   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds a stronger shadow */
-//   border: 1px solid rgba(0, 123, 255, 0.6); /* Highlight border */
-//   transition: all 0.3s ease; /* Smooth animation */
-// }

@@ -9,11 +9,11 @@
 
     a {
       color: #ffffff;
-      text-decoration: none; /* Remove underline */
+      text-decoration: none; 
 
       &:hover {
         color: #ffffff;
-        text-decoration: none; /* Keep underline removed on hover */
+        text-decoration: none;
       }
     }
   }
@@ -33,11 +33,11 @@
 
     a {
       color: #bbbbbb;
-      text-decoration: none; /* Remove underline */
+      text-decoration: none;
 
       &:hover {
         color: #ffffff;
-        text-decoration: none; /* Keep underline removed on hover */
+        text-decoration: none; 
       }
     }
   }

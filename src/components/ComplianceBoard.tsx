@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, Typography, Box, IconButton, Modal, Button } from '@mui/material';
+import { Card, CardContent, Typography, Box, IconButton, Modal, Button, Tooltip } from '@mui/material';
 import { FiCheckCircle, FiAlertCircle, FiActivity, FiAlertTriangle } from 'react-icons/fi';
 import '../styles/board.scss';
 
@@ -30,7 +30,7 @@ const ComplianceBoards: React.FC = () => {
   return (
     <Box sx={{ padding: '20px', minHeight: '250px', maxWidth: '1200px', marginLeft: '40px' }}>
       <Box display="flex" justifyContent="space-between" gap={3}>
-        
+        {/* Certification Status Tile */}
         <Card
           elevation={3}
           className="board board-success"
@@ -56,36 +56,44 @@ const ComplianceBoards: React.FC = () => {
               Certification Status
             </Typography>
             <Box display="flex" justifyContent="space-between" mb={2}>
-              <Box display="flex" alignItems="center" gap={2}>
-                <FiCheckCircle size={28} style={{ color: 'green' }} />
-                <Box>
-                  <Typography variant="subtitle1" fontWeight="bold">Active</Typography>
-                  <Typography variant="body2" color="text.secondary">{complianceData.controlsImplemented} Certifications</Typography>
+              <Tooltip title="Total active certifications" arrow>
+                <Box display="flex" alignItems="center" gap={2}>
+                  <FiCheckCircle size={28} style={{ color: 'green' }} />
+                  <Box>
+                    <Typography variant="subtitle1" fontWeight="bold">Active</Typography>
+                    <Typography variant="body2" color="text.secondary">{complianceData.controlsImplemented} Certifications</Typography>
+                  </Box>
                 </Box>
-              </Box>
-              <Box display="flex" alignItems="center" gap={2}>
-                <FiAlertCircle size={28} style={{ color: 'orange' }} />
-                <Box>
-                  <Typography variant="subtitle1" fontWeight="bold">Upcoming</Typography>
-                  <Typography variant="body2" color="text.secondary">{complianceData.pendingTasks} Certifications</Typography>
+              </Tooltip>
+              <Tooltip title="Upcoming certifications" arrow>
+                <Box display="flex" alignItems="center" gap={2}>
+                  <FiAlertCircle size={28} style={{ color: 'orange' }} />
+                  <Box>
+                    <Typography variant="subtitle1" fontWeight="bold">Upcoming</Typography>
+                    <Typography variant="body2" color="text.secondary">{complianceData.pendingTasks} Certifications</Typography>
+                  </Box>
                 </Box>
-              </Box>
+              </Tooltip>
             </Box>
             <Box display="flex" justifyContent="space-between">
-              <Box display="flex" alignItems="center" gap={2}>
-                <FiActivity size={28} style={{ color: 'blue' }} />
-                <Box>
-                  <Typography variant="subtitle1" fontWeight="bold">Audit Completed</Typography>
-                  <Typography variant="body2" color="text.secondary">{complianceData.resolvedIssues} Audits</Typography>
+              <Tooltip title="Audits completed successfully" arrow>
+                <Box display="flex" alignItems="center" gap={2}>
+                  <FiActivity size={28} style={{ color: 'blue' }} />
+                  <Box>
+                    <Typography variant="subtitle1" fontWeight="bold">Audit Completed</Typography>
+                    <Typography variant="body2" color="text.secondary">{complianceData.resolvedIssues} Audits</Typography>
+                  </Box>
                 </Box>
-              </Box>
-              <Box display="flex" alignItems="center" gap={2}>
-                <FiAlertTriangle size={28} style={{ color: 'red' }} />
-                <Box>
-                  <Typography variant="subtitle1" fontWeight="bold">Issues</Typography>
-                  <Typography variant="body2" color="text.secondary">{complianceData.openIssues} Critical Issues</Typography>
+              </Tooltip>
+              <Tooltip title="Critical issues identified during audits" arrow>
+                <Box display="flex" alignItems="center" gap={2}>
+                  <FiAlertTriangle size={28} style={{ color: 'red' }} />
+                  <Box>
+                    <Typography variant="subtitle1" fontWeight="bold">Issues</Typography>
+                    <Typography variant="body2" color="text.secondary">{complianceData.openIssues} Critical Issues</Typography>
+                  </Box>
                 </Box>
-              </Box>
+              </Tooltip>
             </Box>
           </CardContent>
           <IconButton
@@ -123,29 +131,35 @@ const ComplianceBoards: React.FC = () => {
               Task Summary
             </Typography>
             <Box display="flex" justifyContent="space-between" mb={2}>
-              <Box display="flex" alignItems="center" gap={2}>
-                <FiCheckCircle size={28} style={{ color: 'green' }} />
-                <Box>
-                  <Typography variant="subtitle1" fontWeight="bold">Completed</Typography>
-                  <Typography variant="body2" color="text.secondary">{complianceData.complianceByStatus.completed} Tasks</Typography>
+              <Tooltip title="Total completed tasks" arrow>
+                <Box display="flex" alignItems="center" gap={2}>
+                  <FiCheckCircle size={28} style={{ color: 'green' }} />
+                  <Box>
+                    <Typography variant="subtitle1" fontWeight="bold">Completed</Typography>
+                    <Typography variant="body2" color="text.secondary">{complianceData.complianceByStatus.completed} Tasks</Typography>
+                  </Box>
                 </Box>
-              </Box>
-              <Box display="flex" alignItems="center" gap={2}>
-                <FiAlertCircle size={28} style={{ color: 'orange' }} />
-                <Box>
-                  <Typography variant="subtitle1" fontWeight="bold">Pending</Typography>
-                  <Typography variant="body2" color="text.secondary">{complianceData.complianceByStatus.pending} Tasks</Typography>
+              </Tooltip>
+              <Tooltip title="Pending tasks" arrow>
+                <Box display="flex" alignItems="center" gap={2}>
+                  <FiAlertCircle size={28} style={{ color: 'orange' }} />
+                  <Box>
+                    <Typography variant="subtitle1" fontWeight="bold">Pending</Typography>
+                    <Typography variant="body2" color="text.secondary">{complianceData.complianceByStatus.pending} Tasks</Typography>
+                  </Box>
                 </Box>
-              </Box>
+              </Tooltip>
             </Box>
             <Box display="flex" justifyContent="space-between">
-              <Box display="flex" alignItems="center" gap={2}>
-                <FiActivity size={28} style={{ color: 'blue' }} />
-                <Box>
-                  <Typography variant="subtitle1" fontWeight="bold">In Progress</Typography>
-                  <Typography variant="body2" color="text.secondary">{complianceData.complianceByStatus.open} Tasks</Typography>
+              <Tooltip title="Tasks still in progress" arrow>
+                <Box display="flex" alignItems="center" gap={2}>
+                  <FiActivity size={28} style={{ color: 'blue' }} />
+                  <Box>
+                    <Typography variant="subtitle1" fontWeight="bold">In Progress</Typography>
+                    <Typography variant="body2" color="text.secondary">{complianceData.complianceByStatus.open} Tasks</Typography>
+                  </Box>
                 </Box>
-              </Box>
+              </Tooltip>
             </Box>
           </CardContent>
           <IconButton
@@ -183,20 +197,24 @@ const ComplianceBoards: React.FC = () => {
               Upcoming Audits
             </Typography>
             <Box display="flex" justifyContent="space-between" mb={2}>
-              <Box display="flex" alignItems="center" gap={2}>
-                <FiCheckCircle size={28} style={{ color: 'green' }} />
-                <Box>
-                  <Typography variant="subtitle1" fontWeight="bold">Scheduled</Typography>
-                  <Typography variant="body2" color="text.secondary">{complianceData.pendingTasks} Audits</Typography>
+              <Tooltip title="Scheduled audits" arrow>
+                <Box display="flex" alignItems="center" gap={2}>
+                  <FiCheckCircle size={28} style={{ color: 'green' }} />
+                  <Box>
+                    <Typography variant="subtitle1" fontWeight="bold">Scheduled</Typography>
+                    <Typography variant="body2" color="text.secondary">{complianceData.pendingTasks} Audits</Typography>
+                  </Box>
                 </Box>
-              </Box>
-              <Box display="flex" alignItems="center" gap={2}>
-                <FiAlertTriangle size={28} style={{ color: 'red' }} />
-                <Box>
-                  <Typography variant="subtitle1" fontWeight="bold">Critical</Typography>
-                  <Typography variant="body2" color="text.secondary">{complianceData.openIssues} Delayed Audits</Typography>
+              </Tooltip>
+              <Tooltip title="Critical audits that are delayed" arrow>
+                <Box display="flex" alignItems="center" gap={2}>
+                  <FiAlertTriangle size={28} style={{ color: 'red' }} />
+                  <Box>
+                    <Typography variant="subtitle1" fontWeight="bold">Critical</Typography>
+                    <Typography variant="body2" color="text.secondary">{complianceData.openIssues} Delayed Audits</Typography>
+                  </Box>
                 </Box>
-              </Box>
+              </Tooltip>
             </Box>
           </CardContent>
           <IconButton
@@ -208,6 +226,7 @@ const ComplianceBoards: React.FC = () => {
           </IconButton>
         </Card>
 
+        {/* Modal for View Details */}
         <Modal open={open} onClose={handleClose} aria-labelledby="modal-title" aria-describedby="modal-description">
           <Box
             sx={{

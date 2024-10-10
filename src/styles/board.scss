@@ -3,9 +3,9 @@
   flex-wrap: wrap;
   gap: 20px;
   margin: 20px 0;
-  z-index: 10;  /* Make sure compliance boards are above the other widgets */
   position: relative;
-  width: 100%; 
+  width: 100%;
+  z-index: 10; 
 }
 
 .board-row {
@@ -25,7 +25,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 20; /* Ensure the board has a higher stacking order than widgets */
+  z-index: 20; /* Higher stacking order than widgets */
   position: relative;
 }
 
@@ -89,14 +89,13 @@
   color: #17a2b8;
 }
 
-
-/* Styling for resizing handles */
 .rnd-resize-handle {
-  background-color: #1976d2; /* Color for the handle */
-  width: 10px; /* Width of handle */
-  height: 10px; /* Height of handle */
+  background-color: #1976d2; 
+  width: 14px; 
+  height: 14px;
   border-radius: 50%; /* Rounded handle */
   position: absolute;
+  z-index: 2; 
 }
 
 .rnd-resize-handle-bottom-right {
@@ -105,7 +104,6 @@
   cursor: se-resize;
 }
 
-/* You can similarly style other sides or corners if needed */
 .rnd-resize-handle-top-left {
   top: 0;
   left: 0;
@@ -115,53 +113,62 @@
 .rnd-resize-handle-bottom-left {
   bottom: 0;
   left: 0;
-  cursor: sw-resize;
+  cursor: sw-resize; 
 }
 
 .rnd-resize-handle-top-right {
   top: 0;
   right: 0;
-  cursor: ne-resize;
-}
-/* Customize the resize handles */
-.resizable-box .react-resizable-handle {
-  background-color: #1976d2; /* Change the handle color */
-  width: 12px;
-  height: 12px;
-  border-radius: 50%; /* Make the handles round */
-  position: absolute;
-  z-index: 1;
+  cursor: ne-resize; 
 }
 
-/* Add custom handle for the bottom-right corner */
-.resizable-box .react-resizable-handle-bottom-right {
-  cursor: se-resize;
-  bottom: 0;
-  right: 0;
+.rnd-resize-handle:hover {
+  background-color: #ff9800; 
+  width: 16px; 
+  height: 16px;
 }
 
-/* Add other sides or corner handles if needed */
-.resizable-box .react-resizable-handle-bottom-left {
-  cursor: sw-resize;
-  bottom: 0;
-  left: 0;
+.resizable-box {
+  position: relative; 
+
+  .react-resizable-handle {
+    background-color: #1976d2; 
+    width: 14px;
+    height: 14px;
+    border-radius: 50%; 
+    position: absolute;
+    z-index: 2;
+  }
+
+  .react-resizable-handle-bottom-right {
+    bottom: 0;
+    right: 0;
+    cursor: se-resize; 
+  }
+
+  .react-resizable-handle-bottom-left {
+    bottom: 0;
+    left: 0;
+    cursor: sw-resize; 
+  }
+
+  .react-resizable-handle-top-right {
+    top: 0;
+    right: 0;
+    cursor: ne-resize; /* Diagonal resizing */
+  }
+
+  .react-resizable-handle-top-left {
+    top: 0;
+    left: 0;
+    cursor: nw-resize; /* Diagonal resizing */
+  }
+
+  &:hover .react-resizable-handle {
+    background-color: #ff9800; /* Change color on hover */
+  }
 }
 
-.resizable-box .react-resizable-handle-top-right {
-  cursor: ne-resize;
-  top: 0;
-  right: 0;
-}
-
-.resizable-box .react-resizable-handle-top-left {
-  cursor: nw-resize;
-  top: 0;
-  left: 0;
-}
-
-/* Handle hover effect to indicate resizable */
-.resizable-box:hover .react-resizable-handle {
-  background-color: #ff9800; /* Change color on hover */
-}
-
-
+.rnd-resize-container {
+  outline: none;
+  position: relative; 

@@ -8,7 +8,6 @@ const ComplianceBoards: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [modalContent, setModalContent] = useState<string>('');
 
-  // Modal open/close functions
   const handleOpen = (content: string) => {
     setModalContent(content);
     setOpen(true);
@@ -16,12 +15,12 @@ const ComplianceBoards: React.FC = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <Box sx={{ padding: '20px', minHeight: '250px' ,maxWidth: '1200px', margin: '0 auto' }}>
+    <Box sx={{ padding: '20px', minHeight: '250px' ,maxWidth: '1200px', marginLeft: '40px' }}>
       <Box display="flex" justifyContent="space-between" gap={3}>
         {/* Certification Status Board */}
         <Rnd
           default={{
-            x: 0, // Initial position
+            x: 0, 
             y: 0,
             width: 320,
             height: 250,
@@ -30,7 +29,7 @@ const ComplianceBoards: React.FC = () => {
           minHeight={200}
           maxWidth={600}
           maxHeight={400}
-          bounds="parent" // Restrict movement within parent
+          bounds="parent" 
           enableResizing={{
             bottom: true,
             bottomLeft: true,
@@ -101,10 +100,9 @@ const ComplianceBoards: React.FC = () => {
           </Card>
         </Rnd>
 
-        {/* Task Summary Board */}
         <Rnd
           default={{
-            x: 340, // Adjust to avoid overlapping
+            x: 340, 
             y: 0,
             width: 320,
             height: 250,
@@ -113,8 +111,8 @@ const ComplianceBoards: React.FC = () => {
           minHeight={200}
           maxWidth={600}
           maxHeight={400}
-          bounds="parent" // Restrict movement within parent
-          enableResizing={true} // Allow resizing
+          bounds="parent" 
+          enableResizing={true} 
         >
           <Card
             elevation={3}

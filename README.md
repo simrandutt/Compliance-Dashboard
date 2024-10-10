@@ -43,12 +43,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - 'Chart.js': For creating interactive charts.
   - 'Material-UI': For UI components like the table and sidebar.
   - 'Axios': For making HTTP requests to the backend.
+  - React-Resizable: Provides the resizable handle feature.
+  - React-Rnd: For draggable and resizable components.
 
 - **Backend**:
   - 'Express.js': For handling backend APIs.
   - 'CORS': For enabling cross-origin requests.
   - 'Mock Data': The backend provides mock data for testing.
 
+- **Build Tools**:
+- Webpack: Bundler for managing dependencies and assets.
+- Babel: JavaScript compiler to ensure browser compatibility.
 
 ### Features
 - **Dashboard View**: Displays compliance metrics using bar charts and pie charts with hover tooltips for detailed values.
@@ -64,7 +69,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - **Filter/Search Options**: Allows users to filter or search the displayed data for specific metrics.
 - **Drill-down Charts**: Clicking on a chart element drills down into more detailed information or opens additional charts.
 - **Tooltips**: Added tooltip for drag icon.
-resize oard, borad, view detail popup,added webpack support. slide  tiles in board.
+- **View Details** Popup: Each board has a "View Details" button that opens a modal with additional information on the metrics.
+- **Smooth Slide Animation**: Board slide into place as they are dragged /resized across the dashboard, enhancing user experience.
 
 ### Libraries Used
 - **Frontend**:

@@ -7,6 +7,7 @@ import ListView from './pages/ListView';
 import Reports from './pages/Reports';
 import Settings from './pages/Settings';
 import DarkModeToggle from './components/DarkModeToggle';
+import InfoBar from './components/InfoBar'; // Import the new InfoBar component
 import './styles/dashboard.scss';
 
 const App: React.FC = () => {
@@ -27,6 +28,7 @@ const App: React.FC = () => {
         <Sidebar collapsed={isSidebarCollapsed} toggleSidebar={toggleSidebar} />
         <div className="dashboard-content" style={{ flexGrow: 1 }}>
           <Header />
+          <InfoBar /> {/* Add the InfoBar here */}
           <div style={{ textAlign: 'right', padding: '10px' }}>
             <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
           </div>

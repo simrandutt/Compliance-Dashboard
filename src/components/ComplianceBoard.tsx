@@ -3,18 +3,30 @@ import { Card, CardContent, Typography, Box, IconButton, Modal, Button, Tooltip 
 import { FiCheckCircle, FiAlertCircle, FiActivity, FiAlertTriangle } from 'react-icons/fi';
 import '../styles/board.scss';
 
-const ComplianceBoards: React.FC = () => {
+interface ComplianceBoardsProps {
+  selectedDate: string | null; // Pass the selectedDate as a prop
+}
+
+const ComplianceBoards: React.FC<ComplianceBoardsProps> = ({ selectedDate }) => {
   const [complianceData, setComplianceData] = useState<any>(null); // Store fetched data
   const [open, setOpen] = useState(false);
   const [modalContent, setModalContent] = useState<string>('');
 
   useEffect(() => {
-    // Fetch data from the backend API
-    fetch('http://localhost:5001/api/compliance')
-      .then(response => response.json())
-      .then(data => setComplianceData(data))
-      .catch(error => console.error('Error fetching compliance data:', error));
-  }, []);
+    // Fetch data from the backend API, filtered by the selected date
+    const fetchComplianceData = async () => {
+      try {
+        const queryParams = selectedDate ? `?date=${selectedDate}` : '';
+        const response = await fetch(`http://localhost:5001/api/compliance${queryParams}`);
+        const data = await response.json();
+        setComplianceData(data);
+      } catch (error) {
+        console.error('Error fetching compliance data:', error);
+      }
+    };
+
+    fetchComplianceData();
+  }, [selectedDate]); // Fetch data whenever the selected date changes
 
   const handleOpen = (content: string) => {
     setModalContent(content);

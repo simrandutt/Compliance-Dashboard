@@ -71,7 +71,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - **Tooltips**: Added tooltip for drag icon.
 - **View Details** Popup: Each board has a "View Details" button that opens a modal with additional information on the metrics.
 - **Slide Summary**: Fixed board slides that provides summary of overall deatils.
-
+start date filetr, refresh button, tooltip all over, info bar
 ### Libraries Used
 - **Frontend**:
 

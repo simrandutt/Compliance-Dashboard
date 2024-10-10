@@ -9,11 +9,12 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const PieChart: React.FC<{ complianceByStatus: { completed: number; pending: number; open: number } }> = ({ complianceByStatus }) => {
   const navigate = useNavigate();
 
+  // Create chart data from props
   const data = {
     labels: ['Completed', 'Pending', 'Open'],
     datasets: [
       {
-        data: [complianceByStatus.completed, complianceByStatus.pending, complianceByStatus.open], // Different data for pie chart
+        data: [complianceByStatus.completed, complianceByStatus.pending, complianceByStatus.open],
         backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56'],
       },
     ],
@@ -28,7 +29,7 @@ const PieChart: React.FC<{ complianceByStatus: { completed: number; pending: num
           value: data.datasets[0].data[clickedIndex],
         };
 
-        // Always pass chartData as an array
+        // Pass clicked data for the report
         navigate('/reports', { state: { chartData: [clickedData] } });
       }
     },

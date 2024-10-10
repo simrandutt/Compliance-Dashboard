@@ -1,0 +1,28 @@
+.info-bar {
+  width: 100%;
+  height: 30px; /* Adjusted for a taller bar */
+  background: linear-gradient(90deg, #ffcc00, #ff9900); /* Gradient background */
+  color: white;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center; /* Vertically center the text */
+}
+
+.scrolling-text {
+  display: inline-block;
+  white-space: nowrap;
+  position: absolute;
+  will-change: transform;
+  animation: scroll-left 15s linear infinite; /* Continuous scrolling animation */
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%); /* Start from the right */
+  }
+  100% {
+    transform: translateX(-100%); /* Move completely to the left */
+  }
+}

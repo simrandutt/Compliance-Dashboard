@@ -13,16 +13,16 @@ const complianceData = {
   openIssues: 12, // Open issues count
 
   monthlyData: [
-    { month: 'Aug', completedOnTime: 10, completedOverdue: 5, stillOpen: 3 },
-    { month: 'Sep', completedOnTime: 15, completedOverdue: 6, stillOpen: 2 },
-    { month: 'Oct', completedOnTime: 12, completedOverdue: 7, stillOpen: 4 },
-    { month: 'Nov', completedOnTime: 20, completedOverdue: 9, stillOpen: 1 },
-    { month: 'Dec', completedOnTime: 22, completedOverdue: 8, stillOpen: 0 },
-    { month: 'Jan', completedOnTime: 18, completedOverdue: 5, stillOpen: 2 },
-    { month: 'Feb', completedOnTime: 14, completedOverdue: 7, stillOpen: 3 },
-    { month: 'Mar', completedOnTime: 24, completedOverdue: 6, stillOpen: 1 },
-    { month: 'Apr', completedOnTime: 20, completedOverdue: 4, stillOpen: 0 },
-    { month: 'May', completedOnTime: 21, completedOverdue: 8, stillOpen: 2 },
+    { month: 'Aug', year: 2022, completedOnTime: 10, completedOverdue: 5, stillOpen: 3 },
+    { month: 'Sep', year: 2022, completedOnTime: 15, completedOverdue: 6, stillOpen: 2 },
+    { month: 'Oct', year: 2022, completedOnTime: 12, completedOverdue: 7, stillOpen: 4 },
+    { month: 'Nov', year: 2022, completedOnTime: 20, completedOverdue: 9, stillOpen: 1 },
+    { month: 'Dec', year: 2022, completedOnTime: 22, completedOverdue: 8, stillOpen: 0 },
+    { month: 'Jan', year: 2023, completedOnTime: 18, completedOverdue: 5, stillOpen: 2 },
+    { month: 'Feb', year: 2023, completedOnTime: 14, completedOverdue: 7, stillOpen: 3 },
+    { month: 'Mar', year: 2023, completedOnTime: 24, completedOverdue: 6, stillOpen: 1 },
+    { month: 'Apr', year: 2023, completedOnTime: 20, completedOverdue: 4, stillOpen: 0 },
+    { month: 'May', year: 2023, completedOnTime: 21, completedOverdue: 8, stillOpen: 2 },
   ],
 
   // Pie chart data for compliance by status
@@ -32,23 +32,46 @@ const complianceData = {
     open: 3, // Total open tasks
   },
 
-  // Work orders with more complexity
-  workOrders: Array.from({ length: 30 }, (v, i) => ({
+  // Work orders across different years and months
+  workOrders: Array.from({ length: 60 }, (v, i) => ({
     id: `#20${800 + i}`,
     name: `Work Order ${i + 1}`,
-    startDate: `2023-07-${10 + i}`,
-    dueDate: `2023-07-${15 + i}`,
-    completionDate: `2023-07-${16 + i}`,
-    priority: i % 2 === 0 ? 'High' : 'Low', // New column: Priority of the work order
-    status: i % 2 === 0 ? 'Completed' : 'Pending', // New column: Status of the work order
-    assignedTo: `User ${i + 1}`, // New column: Assigned user
-    description: `This is a description for work order ${i + 1}`, // New column: Description of the work order
+    startDate: `2022-${(i % 12) + 1}-${(10 + i % 20)}`, // Spread across 2022 and 2023
+    dueDate: `2022-${(i % 12) + 1}-${(15 + i % 20)}`,
+    completionDate: `2022-${(i % 12) + 1}-${(16 + i % 20)}`,
+    priority: i % 2 === 0 ? 'High' : 'Low', // Priority of the work order
+    status: i % 2 === 0 ? 'Completed' : 'Pending', // Status of the work order
+    assignedTo: `User ${i + 1}`, // Assigned user
+    description: `This is a description for work order ${i + 1}`, // Description
   })),
 };
 
-// Endpoint to get compliance metrics
+// Endpoint to get compliance metrics with date filtering
 app.get('/api/compliance', (req, res) => {
-  res.json(complianceData);
+  const { date } = req.query; // Get the date from the query params
+  let filteredData = complianceData;
+
+  // If a date is provided, filter work orders and monthly data based on the date
+  if (date) {
+    const selectedDate = new Date(date);
+
+    // Filter work orders based on startDate
+    filteredData = {
+      ...complianceData,
+      workOrders: complianceData.workOrders.filter((order) => {
+        const orderStartDate = new Date(order.startDate);
+        return orderStartDate >= selectedDate;
+      }),
+
+      // Filter monthlyData based on year and month
+      monthlyData: complianceData.monthlyData.filter((data) => {
+        const dataDate = new Date(`${data.year}-${data.month}-01`);
+        return dataDate >= selectedDate;
+      }),
+    };
+  }
+
+  res.json(filteredData);
 });
 
 // Start the server

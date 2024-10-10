@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Compliance Dashboard
 
-## Setup Instructions
+## Setup Instructions: Use Node version 16+
 
 ### Running the Project
 
@@ -28,14 +28,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 2. The backend will run on:
    'http://localhost:5001'
 
-### Features
-
-- 'Dashboard View': Displays compliance metrics in the form of bar charts and pie charts.
-- 'Hover Tooltips': View detailed values on hovering over the bar chart.
-- 'Work Orders': Displays a paginated table with compliance work orders.
-- 'Pagination Support': The work orders table supports pagination to manage large datasets.
-- 'Data Fetching': Compliance metrics are fetched from the backend server.
-
 ### Libraries Used
 
 - **Frontend**:
@@ -43,9 +35,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - 'Chart.js': For creating interactive charts.
   - 'Material-UI': For UI components like the table and sidebar.
   - 'Axios': For making HTTP requests to the backend.
-  - React-Resizable: Provides the resizable handle feature.
-  - React-Rnd: For draggable and resizable components.
-
+    
 - **Backend**:
   - 'Express.js': For handling backend APIs.
   - 'CORS': For enabling cross-origin requests.
@@ -55,98 +45,82 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Webpack: Bundler for managing dependencies and assets.
 - Babel: JavaScript compiler to ensure browser compatibility.
 
-### Features
-- **Dashboard View**: Displays compliance metrics using bar charts and pie charts with hover tooltips for detailed values.
-- **Hover Tooltips**: View detailed values by hovering over the bar chart.
-- **Work Orders**: Displays a paginated table with compliance work orders, including details such as work order ID, start date, due date, and status.
-- **Pagination Support**: The work orders table supports pagination, allowing users to navigate through large datasets.
-- **Data Fetching**: Compliance metrics and work orders are fetched from the backend server.
-- **Theme Toggle**: Users can switch between light and dark modes for the dashboard.
-- **Draggable Widgets**: Dashboard widgets, including charts and tables, are draggable and resizable for a customizable layout.
-- **Shimmer UI**: Displays a loading shimmer effect while fetching compliance data.
-- **Dynamic Alerts**: Implements color-coded alerts that notify users when key metrics, like "Pending Tasks," exceed certain thresholds.
-- **Real-time Updates**: Simulates real-time data updates by refreshing compliance metrics and tasks every few minutes.
-- **Filter/Search Options**: Allows users to filter or search the displayed data for specific metrics.
-- **Drill-down Charts**: Clicking on a chart element drills down into more detailed information or opens additional charts.
-- **Tooltips**: Added tooltip for drag icon.
-- **View Details** Popup: Each board has a "View Details" button that opens a modal with additional information on the metrics.
-- **Slide Summary**: Fixed board slides that provides summary of overall deatils.
-start date filetr, refresh button, tooltip all over, info bar
-### Libraries Used
-- **Frontend**:
+### **Features**
 
-- React.js: For building the user interface.
-- Chart.js: For creating interactive charts.
-- Material-UI: For UI components like tables and sidebars.
-- Axios: For making HTTP requests to the backend.
-
-- **Backend**:
-
-- Express.js: For handling backend APIs.
-- CORS: For enabling cross-origin requests.
-- Mock Data: The backend provides mock data for testing.
-
-**UI Features and Interactions**
-
-- **Dashboard Light Mode**
-<img width="1440" alt="Screenshot 2024-10-09 at 2 29 22 PM" src="https://github.com/user-attachments/assets/c2130054-8cfb-4460-9ff5-70c5c04e73e4">
-
-- **Dark Mode Theme**
+- **Login Page**: Users can log in by entering their username and password. Once authenticated, they are redirected to the main dashboard where compliance metrics are displayed.
   
-<img width="1440" alt="Screenshot 2024-10-09 at 2 29 29 PM" src="https://github.com/user-attachments/assets/bb685109-4d5a-4249-89df-a54ee8c9599e">
+<img width="1440" alt="Screenshot 2024-10-10 at 2 09 14 PM" src="https://github.com/user-attachments/assets/d2b66e4f-deac-423d-bbfb-64bf12a0316e">
 
-- **List View**
-<img width="1355" alt="Screenshot 2024-10-09 at 2 20 27 PM" src="https://github.com/user-attachments/assets/de7c0038-7742-4c43-b910-45bb48b7bddc">
+- **Dashboard View**: The dashboard presents an overview of key metrics, organized into charts, tables, and summary tiles. It includes:
+  - **Header**: Contains the profile icon, date filter, theme toggle (dark/light mode), and a refresh button.
+  - **Left Panel**: A collapsible sidebar with navigation options to different sections of the dashboard (e.g., List View, Reports, Settings).
+  - **Interactive Compliance metrics Widgets**: Bar charts, line charts, pie charts, and tables that users can interact with for further insights.
+  - **Summary  work orders board**: Fixed board slides that provide an overview of key compliance metrics, like active certifications, pending audits, and critical issues.
+<img width="1440" alt="Screenshot 2024-10-10 at 2 10 08 PM" src="https://github.com/user-attachments/assets/e38e3a19-5218-4026-be00-8f506c262a89">
 
-- **Reports contains chart dynamic data**
-<img width="1354" alt="Screenshot 2024-10-09 at 2 20 22 PM" src="https://github.com/user-attachments/assets/b5b44c20-769e-40bb-b994-bdba07e5983e">
+- **Data Fetching**: Widgets and Summary Board are fetched from the backend. The data is dynamically updated based on the selected start date or by clicking the refresh button.
 
-- **Settings**
-<img width="1359" alt="Screenshot 2024-10-09 at 2 20 18 PM" src="https://github.com/user-attachments/assets/3b7210c5-4bf0-4388-b0a4-2ea9bb697948">
+- **Draggable Widgets**: Users can customize the layout by dragging and dropping widgets (such as charts and tables) to desired positions.
+<img width="1440" alt="Screenshot 2024-10-10 at 2 11 03 PM" src="https://github.com/user-attachments/assets/b02b88b9-3cc9-4c69-b8f3-a54b5f155ee8">
 
-- **Profile and Logout**
-<img width="946" alt="Screenshot 2024-10-09 at 2 20 06 PM" src="https://github.com/user-attachments/assets/e0906e2c-9653-45a6-8045-5dc695968176">
+- **Summary work orders Board**: Fixed slides provide a quick overview of critical compliance metrics like active certifications, pending audits, and critical issues. These slides are always visible for easy reference.
+<img width="1440" alt="Screenshot 2024-10-10 at 2 10 24 PM" src="https://github.com/user-attachments/assets/5a5e0be5-459b-4c30-8945-834a1959775b">
+- **List View Tab**: Displays a detailed list of compliance tasks and work orders in a searchable table format for easy browsing and analysis.
+<img width="1440" alt="Screenshot 2024-10-10 at 2 11 48 PM" src="https://github.com/user-attachments/assets/c6799b90-8aaf-43b0-9b35-4c9687a1957b">
 
-- **Drag and Drop Feature for widgets - Drag Icon on right**
-<img width="1358" alt="Screenshot 2024-10-09 at 2 22 04 PM" src="https://github.com/user-attachments/assets/d257171c-a4c0-4956-9859-2a8617588ff3">
+- **Reports Section**: Provides detailed analytics and visual reports on compliance data. Users can dive deeper into specific metrics by clicking on chart elements.
+<img width="1440" alt="Screenshot 2024-10-10 at 2 11 57 PM" src="https://github.com/user-attachments/assets/fa7fe850-edc9-42e9-8375-1cee04acdb6f">
 
-<img width="1232" alt="Screenshot 2024-10-09 at 2 04 43 PM" src="https://github.com/user-attachments/assets/e5164f20-fdae-4d30-bbe0-e5fff1d2f849">
+- **Settings Page**: Users can configure various dashboard preferences, including refresh intervals, layout customizations, and theme settings.
+<img width="1440" alt="Screenshot 2024-10-10 at 2 12 22 PM" src="https://github.com/user-attachments/assets/4e9b63fc-0cd7-42a8-82a3-07bb63dd2d76">
 
-- 
-- **Drill Down filter in Pie Chart by deselection specific status**
-  <img width="616" alt="Screenshot 2024-10-09 at 2 21 49 PM" src="https://github.com/user-attachments/assets/b6780b43-1f42-437e-86a0-da412ab80b20">
-
-<img width="584" alt="Screenshot 2024-10-09 at 2 21 44 PM" src="https://github.com/user-attachments/assets/fe6800a4-bee2-476a-9d22-0a7bc2638305">
-  
-- **Drill Down filter Bar Chart  by deselection specific status**
-
-<img width="560" alt="Screenshot 2024-10-09 at 2 04 46 PM" src="https://github.com/user-attachments/assets/8fd66b82-a031-485c-b19a-2379852508a0">
-<img width="663" alt="Screenshot 2024-10-09 at 2 04 26 PM" src="https://github.com/user-attachments/assets/59765bb6-af79-44f4-a6c4-45e202f96108">
-
-  
-- **Collapse/Expand left panel**
-<img width="756" alt="Screenshot 2024-10-09 at 2 20 35 PM" src="https://github.com/user-attachments/assets/5509bf15-2d14-4290-83ec-b43239c9fbf5">
-
-- **Table Search Bar**
-<img width="1345" alt="Screenshot 2024-10-09 at 2 11 40 PM" src="https://github.com/user-attachments/assets/12710bea-c1ab-4c72-88ba-d96dcc19a294">
-
-<img width="1289" alt="Screenshot 2024-10-09 at 2 05 01 PM" src="https://github.com/user-attachments/assets/523c00ba-eeff-40d4-ae81-3f011490e07f">
-
-- **Table Pagination**
-
-<img width="1070" alt="Screenshot 2024-10-09 at 2 22 26 PM" src="https://github.com/user-attachments/assets/2cd76a16-df5e-4294-8d86-5a33d9c73205">
-
-  
-- **On click on bar chart, it will navigate to Reports Page with data interaction.**
-
-<img width="1359" alt="Screenshot 2024-10-09 at 2 22 15 PM" src="https://github.com/user-attachments/assets/592bb760-3502-48c1-8b27-f9aca1bfa8ab">
-<img width="1360" alt="Screenshot 2024-10-09 at 2 22 12 PM" src="https://github.com/user-attachments/assets/a3f35d96-cfda-46f4-993f-421bd4a2521c">
-
--**On click of Pie Chart, it will navigate to Reports page with data**
-<img width="1351" alt="Screenshot 2024-10-09 at 2 05 16 PM" src="https://github.com/user-attachments/assets/92f61e06-a25e-4e66-8b71-fa2f9c41c1a1">
-
--** Shimmer UI or loader, when no data from server, Once data loads the new UI**
-<img width="1257" alt="Screenshot 2024-10-09 at 2 48 33 PM" src="https://github.com/user-attachments/assets/04a2075b-6b4f-40d0-9c05-d2ea08baf7ad">
+- **Profile Icon and Logout**: Users can manage their profile via the profile icon. The logout option redirects users back to the login page for secure exit.
+<img width="1440" alt="Screenshot 2024-10-10 at 2 12 34 PM" src="https://github.com/user-attachments/assets/5350b8e3-c082-413f-a223-ec9c2a848a50">
 
 
+
+### **Creativity and Interaction Features**
+
+- **Shimmer Loading Effect**: While data is being fetched, a shimmer effect displays to indicate that the system is working, providing a smooth visual experience.
+
+- **Hover Tooltips**: Users can hover over different parts of the charts to view detailed information. This allows quick access to more in-depth data without needing to leave the current view.
+<img width="1267" alt="Screenshot 2024-10-10 at 2 13 16 PM" src="https://github.com/user-attachments/assets/4b25aba7-4b13-4091-a82b-2eafa9f87bb0">
+<img width="636" alt="Screenshot 2024-10-10 at 2 13 30 PM" src="https://github.com/user-attachments/assets/0b76fb69-a64b-40ef-b741-1b637402c42b">
+
+- **Drill-down Charts**: Clicking on specific elements in charts ( bars or pie slices colors) navigate users to detailed reports page for deeper analysis, making data exploration more efficient.
+<img width="590" alt="Screenshot 2024-10-10 at 2 14 10 PM" src="https://github.com/user-attachments/assets/4f4c6b24-1ca5-43d4-aa59-1eb824a26bc1">
+<img width="1440" alt="Screenshot 2024-10-10 at 2 14 48 PM" src="https://github.com/user-attachments/assets/d57f468f-ee55-42e8-9bb8-af44fa6f6b04">
+
+- **Search and Filter in Table Widgets**: In the work orders table, users can search or apply filters to quickly find specific data. This is especially useful when working with large datasets.
+<img width="1440" alt="Screenshot 2024-10-10 at 2 15 09 PM" src="https://github.com/user-attachments/assets/f0f5ed70-26fa-4d31-8ebc-a711fc5e6cb5">
+
+- **Pagination in Table**: The work orders table is paginated, allowing users to navigate large datasets without overwhelming the interface.
+<img width="1240" alt="Screenshot 2024-10-10 at 2 15 32 PM" src="https://github.com/user-attachments/assets/d6da6aa1-9ba0-4200-9495-84564130505a">
+
+- **Theme Toggle**: A theme toggle button allows users to switch between dark and light modes, improving the overall readability based on personal preference.
+<img width="1440" alt="Screenshot 2024-10-10 at 2 15 58 PM" src="https://github.com/user-attachments/assets/3358009a-8c3b-424a-8699-a1d0ecc7890c">
+
+- **Draggable Widgets**: Widgets on the dashboard (like charts and tables) can be dragged, letting users personalize the dashboard layout to suit their needs.
+<img width="1440" alt="Screenshot 2024-10-10 at 2 16 55 PM" src="https://github.com/user-attachments/assets/1fe7fc69-dad4-46ec-8e21-5aea36c56b69">
+
+- **Real-time Data Refresh**: A refresh button allows users to manually update the dashboard data, while periodic refreshes ensure that the displayed information is up-to-date.
+<img width="547" alt="Screenshot 2024-10-10 at 2 17 12 PM" src="https://github.com/user-attachments/assets/725537e0-0084-42ec-9604-01d26fb87893">
+
+- **Dynamic Alerts Filter**: Color-coded alerts notify users when important metrics, like pending tasks or critical issues, exceed predefined thresholds. Users can click on alerts to filter the charts based on those metrics.
+<img width="1320" alt="Screenshot 2024-10-10 at 2 18 25 PM" src="https://github.com/user-attachments/assets/0aae5e5c-e1bd-4bf6-a6c7-05d1c20d5d8e">
+
+- **Start Date Filter**: Users can select a specific start date to view compliance data from that point onward, allowing for focused analysis over time.
+<img width="585" alt="Screenshot 2024-10-10 at 2 17 52 PM" src="https://github.com/user-attachments/assets/f40bf69a-2013-4f9b-a7e2-af43315262ee">
+
+- **Scrolling Info Bar Animation**: A scrolling text bar provides important updates like upcoming system maintenance. Hovering over the bar pauses the scrolling, making it easier for users to read the information.
+<img width="1421" alt="Screenshot 2024-10-10 at 2 18 49 PM" src="https://github.com/user-attachments/assets/918d4160-4232-4053-954b-ef7926b81022">
+
+- **View Details Pop-up**: Each summary tile has a "View Details" button. Clicking it opens a modal with additional information, giving users the ability to view in-depth data related to that metric.
+<img width="512" alt="Screenshot 2024-10-10 at 2 20 43 PM" src="https://github.com/user-attachments/assets/1f43a2ed-fdb6-47a5-a004-f9890dae531a">
+
+<img width="1440" alt="Screenshot 2024-10-10 at 2 20 40 PM" src="https://github.com/user-attachments/assets/bf3aa35c-b70a-4649-9490-40ba71c8b77a">
+
+- **Collapsible Left Panel**: The left sidebar can be expanded or collapsed, giving users more room to focus on the main dashboard content when needed.
+
+<img width="1440" alt="Screenshot 2024-10-10 at 2 20 25 PM" src="https://github.com/user-attachments/assets/5d54d472-c09d-42cb-af1d-bb39a53e4f45">
 

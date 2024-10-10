@@ -105,9 +105,7 @@ const Dashboard: React.FC = () => {
           </Button>
         </div>
       </div>
-
-      <ComplianceBoards selectedDate={selectedDate} />
-
+      
       <ResponsiveGridLayout
         className="layout"
         breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
@@ -179,6 +177,8 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </ResponsiveGridLayout>
+      <ComplianceBoards selectedDate={selectedDate} />
+
     </div>
   );
 };

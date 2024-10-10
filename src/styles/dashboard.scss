@@ -119,6 +119,7 @@
 
 .layout .react-grid-item {
   cursor: auto;
+
 }
 
 .widget {
@@ -134,4 +135,7 @@
   overflow-y: auto;
   scroll-behavior: smooth; 
   height: 94%;
+}
+.react-grid-item {
+  z-index: 15 !important;
 }

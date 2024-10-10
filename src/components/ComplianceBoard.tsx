@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, Typography, Box, IconButton, Modal, Button } from '@mui/material';
 import { FiCheckCircle, FiAlertCircle, FiActivity, FiAlertTriangle } from 'react-icons/fi';
 import '../styles/board.scss';
 
 const ComplianceBoards: React.FC = () => {
+  const [complianceData, setComplianceData] = useState<any>(null); // Store fetched data
   const [open, setOpen] = useState(false);
   const [modalContent, setModalContent] = useState<string>('');
 
+  useEffect(() => {
+    // Fetch data from the backend API
+    fetch('http://localhost:5001/api/compliance')
+      .then(response => response.json())
+      .then(data => setComplianceData(data))
+      .catch(error => console.error('Error fetching compliance data:', error));
+  }, []);
+
+  // Handle modal actions
   const handleOpen = (content: string) => {
     setModalContent(content);
     setOpen(true);
@@ -14,9 +24,15 @@ const ComplianceBoards: React.FC = () => {
 
   const handleClose = () => setOpen(false);
 
+  if (!complianceData) {
+    // Render loading state while fetching data
+    return <div>Loading...</div>;
+  }
+
   return (
     <Box sx={{ padding: '20px', minHeight: '250px', maxWidth: '1200px', marginLeft: '40px' }}>
       <Box display="flex" justifyContent="space-between" gap={3}>
+        
         {/* Certification Status Tile */}
         <Card
           elevation={3}
@@ -47,14 +63,14 @@ const ComplianceBoards: React.FC = () => {
                 <FiCheckCircle size={28} style={{ color: 'green' }} />
                 <Box>
                   <Typography variant="subtitle1" fontWeight="bold">Active</Typography>
-                  <Typography variant="body2" color="text.secondary">15 Certifications</Typography>
+                  <Typography variant="body2" color="text.secondary">{complianceData.controlsImplemented} Certifications</Typography>
                 </Box>
               </Box>
               <Box display="flex" alignItems="center" gap={2}>
                 <FiAlertCircle size={28} style={{ color: 'orange' }} />
                 <Box>
                   <Typography variant="subtitle1" fontWeight="bold">Upcoming</Typography>
-                  <Typography variant="body2" color="text.secondary">5 Certifications</Typography>
+                  <Typography variant="body2" color="text.secondary">{complianceData.pendingTasks} Certifications</Typography>
                 </Box>
               </Box>
             </Box>
@@ -63,14 +79,14 @@ const ComplianceBoards: React.FC = () => {
                 <FiActivity size={28} style={{ color: 'blue' }} />
                 <Box>
                   <Typography variant="subtitle1" fontWeight="bold">Audit Completed</Typography>
-                  <Typography variant="body2" color="text.secondary">10 Audits</Typography>
+                  <Typography variant="body2" color="text.secondary">{complianceData.resolvedIssues} Audits</Typography>
                 </Box>
               </Box>
               <Box display="flex" alignItems="center" gap={2}>
                 <FiAlertTriangle size={28} style={{ color: 'red' }} />
                 <Box>
                   <Typography variant="subtitle1" fontWeight="bold">Issues</Typography>
-                  <Typography variant="body2" color="text.secondary">7 Critical Issues</Typography>
+                  <Typography variant="body2" color="text.secondary">{complianceData.openIssues} Critical Issues</Typography>
                 </Box>
               </Box>
             </Box>
@@ -114,14 +130,14 @@ const ComplianceBoards: React.FC = () => {
                 <FiCheckCircle size={28} style={{ color: 'green' }} />
                 <Box>
                   <Typography variant="subtitle1" fontWeight="bold">Completed</Typography>
-                  <Typography variant="body2" color="text.secondary">48 Tasks</Typography>
+                  <Typography variant="body2" color="text.secondary">{complianceData.complianceByStatus.completed} Tasks</Typography>
                 </Box>
               </Box>
               <Box display="flex" alignItems="center" gap={2}>
                 <FiAlertCircle size={28} style={{ color: 'orange' }} />
                 <Box>
                   <Typography variant="subtitle1" fontWeight="bold">Pending</Typography>
-                  <Typography variant="body2" color="text.secondary">12 Tasks</Typography>
+                  <Typography variant="body2" color="text.secondary">{complianceData.complianceByStatus.pending} Tasks</Typography>
                 </Box>
               </Box>
             </Box>
@@ -130,7 +146,7 @@ const ComplianceBoards: React.FC = () => {
                 <FiActivity size={28} style={{ color: 'blue' }} />
                 <Box>
                   <Typography variant="subtitle1" fontWeight="bold">In Progress</Typography>
-                  <Typography variant="body2" color="text.secondary">5 Tasks</Typography>
+                  <Typography variant="body2" color="text.secondary">{complianceData.complianceByStatus.open} Tasks</Typography>
                 </Box>
               </Box>
             </Box>
@@ -174,14 +190,14 @@ const ComplianceBoards: React.FC = () => {
                 <FiCheckCircle size={28} style={{ color: 'green' }} />
                 <Box>
                   <Typography variant="subtitle1" fontWeight="bold">Scheduled</Typography>
-                  <Typography variant="body2" color="text.secondary">3 Audits</Typography>
+                  <Typography variant="body2" color="text.secondary">{complianceData.pendingTasks} Audits</Typography>
                 </Box>
               </Box>
               <Box display="flex" alignItems="center" gap={2}>
                 <FiAlertTriangle size={28} style={{ color: 'red' }} />
                 <Box>
                   <Typography variant="subtitle1" fontWeight="bold">Critical</Typography>
-                  <Typography variant="body2" color="text.secondary">2 Delayed Audits</Typography>
+                  <Typography variant="body2" color="text.secondary">{complianceData.openIssues} Delayed Audits</Typography>
                 </Box>
               </Box>
             </Box>

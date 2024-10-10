@@ -70,7 +70,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - **Drill-down Charts**: Clicking on a chart element drills down into more detailed information or opens additional charts.
 - **Tooltips**: Added tooltip for drag icon.
 - **View Details** Popup: Each board has a "View Details" button that opens a modal with additional information on the metrics.
-- **Smooth Slide Animation**: Board slide into place as they are dragged /resized across the dashboard, enhancing user experience.
+- **Slide Summary**: Fixed board slides that provides summary of overall deatils.
 
 ### Libraries Used
 - **Frontend**:

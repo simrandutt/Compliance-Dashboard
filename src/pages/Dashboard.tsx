@@ -9,7 +9,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { FiMove, FiRefreshCw } from 'react-icons/fi';
 import '../styles/dashboard.scss';
 import { Tooltip, TextField, Button } from '@mui/material';
-import ComplianceBoards from '../components/ComplianceBoard'; // Import the component
+import ComplianceBoards from '../components/ComplianceBoard'; 
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
